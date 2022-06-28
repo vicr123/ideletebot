@@ -1,4 +1,5 @@
 const discord = require("discord.js");
+const fs = require("fs/promises");
 
 const targetChannel = process.env.CHANNEL;
 
@@ -32,6 +33,7 @@ client.on('messageCreate', async msg => {
     let line = lines[Math.floor(Math.random() * lines.length)];
 
     await msg.delete();
-    msg.channel.send(`<@${msg.author.id}> Oh, no! ${line} **What a shame.**`);
+    await msg.channel.send(`<@${msg.author.id}> Oh, no! ${line} **What a shame.**`);
+    await fs.appendFile(`hits-${new Date().getUTCFullYear()}.txt`, `${msg.author.id},${new Date().getTime()}\n`);
 });
 client.login(process.env.TOKEN);
