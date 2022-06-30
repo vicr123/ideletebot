@@ -6,7 +6,7 @@ const targetChannel = process.env.CHANNEL;
 const lines = [
     "Your message was whisked away to Narnia by the elves.",
     "Your message was beat out of the water by theBeat.",
-    "Your message was maliciously destroyed by Buzz Lighyear.",
+    "Your message was maliciously destroyed by Buzz Lightyear.",
     "Your message was randomly selected to be deleted by iDeleteBot.",
     "Your message was the 1000000th message to be sent by some metric, and won a free one-way trip to the sun!",
     "Your message wasn't wearing its headphones correctly and was sent on a virtual trip around the world.",
@@ -14,7 +14,9 @@ const lines = [
     "Your message was having a connection issue.",
     "Your message wanted 2 order some FrivoloCo instead.",
     "Your message segfaulted itself on the way to the server.",
-    "Your message went to Kmart."
+    "Your message went to Kmart.",
+    "Your message was as stable as FMP.",
+    "iDeleteBot strikes again!"
 ];
 
 const client = new discord.Client({
@@ -28,7 +30,7 @@ client.on('messageCreate', async msg => {
     if (msg.channelId !== targetChannel) return;
     if (msg.author.bot) return;
 
-    if (Math.random() > 0.2) return;
+    if (Math.random() > 0.05) return;
 
     let line = lines[Math.floor(Math.random() * lines.length)];
 
